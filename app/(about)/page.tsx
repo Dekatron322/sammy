@@ -97,7 +97,7 @@ export default function HeroSection() {
             className="rounded-md bg-[#73001A] px-8 py-3 text-white hover:bg-[#5a0015]"
             href="/lets-talk"
           >
-            Let's talk
+            Let&apos;s talk
           </motion.a>
         </div>
 
