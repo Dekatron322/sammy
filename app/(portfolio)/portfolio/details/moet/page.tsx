@@ -1,5 +1,5 @@
 "use client"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
 import DashboardNav from "components/Navbar/DashboardNav"
 
@@ -127,13 +127,13 @@ export default function HeroSection() {
               </motion.p>
               <motion.p className="mt-2 text-lg text-[#10172099] md:text-center" variants={fadeInVariants}>
                 At Moët Hennessy, Sammy spearheaded transformative brand education programs that reached more than 5,000
-                stakeholders and produced the company's first Africa-adapted consumer brochure, setting new standards
-                for accessible luxury. He played a vital role in expanding Moët Hennessy's presence in Nigeria's
-                prestige markets, driving a 15% growth in high-end outlets in just one year. His pioneering digital
-                learning platform trained over 700 service professionals in six months, earning him Moët & Chandon's
-                global 'Wine Credo' award. Sammy's work elevated the market share of key brands like Belvedere Vodka and
-                Hennessy Cognac through immersive consumer experiences and data-driven strategies that continue to shape
-                the premium lifestyle space in Africa
+                stakeholders and produced the company&apos;s first Africa-adapted consumer brochure, setting new
+                standards for accessible luxury. He played a vital role in expanding Moët Hennessy&apos;s presence in
+                Nigeria&apos;s prestige markets, driving a 15% growth in high-end outlets in just one year. His
+                pioneering digital learning platform trained over 700 service professionals in six months, earning him
+                Moët & Chandon&apos;s global &apos;Wine Credo&apos; award. Sammy&apos;s work elevated the market share
+                of key brands like Belvedere Vodka and Hennessy Cognac through immersive consumer experiences and
+                data-driven strategies that continue to shape the premium lifestyle space in Africa
               </motion.p>
               <motion.p className="my-4 text-lg text-[#10172099] md:text-center" variants={fadeInVariants}>
                 Sammy Okwandu is a dynamic marketing and brand strategy leader with over seven years of experience

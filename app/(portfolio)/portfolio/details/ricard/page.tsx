@@ -1,7 +1,7 @@
 "use client"
-import { useRef, useState, useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import DashboardNav from "components/Navbar/DashboardNav"
 
 export default function HeroSection() {
@@ -147,7 +147,7 @@ export default function HeroSection() {
               Pouring Premium into Every Pour
             </motion.p>
             <motion.p className="headfont mt-2 text-lg text-[#101720] md:text-center" variants={itemVariants}>
-              Shaping how premium spirits show up in Nigeria's top venues
+              Shaping how premium spirits show up in Nigeria&apos;`s top venues
             </motion.p>
 
             <motion.div
@@ -159,14 +159,14 @@ export default function HeroSection() {
               </motion.p>
               <motion.p className="mt-2 text-lg text-[#10172099] md:text-center" variants={fadeInVariants}>
                 Sammy Okwandu brought strategic finesse and deep industry insight to his role as National On-Trade
-                Manager at Pernod Ricard West Africa, where he played a leading role in shaping the company's premium
-                footprint across Nigeria. His focus on top-tier hospitality channels enabled Pernod Ricard to cement its
-                presence in the upscale On-trade space through smarter distribution, elevated brand visibility, and
-                meaningful consumer engagement.
+                Manager at Pernod Ricard West Africa, where he played a leading role in shaping the company&apos;`s
+                premium footprint across Nigeria. His focus on top-tier hospitality channels enabled Pernod Ricard to
+                cement its presence in the upscale On-trade space through smarter distribution, elevated brand
+                visibility, and meaningful consumer engagement.
               </motion.p>
               <motion.p className="my-4 text-lg text-[#10172099] md:w-[600px] md:text-center" variants={fadeInVariants}>
-                Sammy's work redefined On-trade excellence for Pernod Ricard in Nigeria. His approach combined premium
-                execution with practical market wins.
+                Sammy&apos;`s work redefined On-trade excellence for Pernod Ricard in Nigeria. His approach combined
+                premium execution with practical market wins.
               </motion.p>
 
               <motion.div

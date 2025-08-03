@@ -1,8 +1,8 @@
 "use client"
 
-import { useRef, useState, useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import DashboardNav from "components/Navbar/DashboardNav"
-import { LoadScript, GoogleMap, Marker, InfoWindow } from "@react-google-maps/api"
+import { GoogleMap, InfoWindow, LoadScript, Marker } from "@react-google-maps/api"
 
 // Google Maps API key - replace with your own
 const GOOGLE_MAPS_API_KEY = "YOUR_GOOGLE_MAPS_API_KEY"

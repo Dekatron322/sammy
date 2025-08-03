@@ -1,6 +1,6 @@
 "use client"
-import { useRef, useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
 import DashboardNav from "components/Navbar/DashboardNav"
 import { useRouter } from "next/navigation"
 
@@ -147,12 +147,12 @@ export default function HeroSection() {
                 Purpose and deeper achievements
               </motion.p>
               <motion.p className="mt-2 text-lg text-[#10172099] md:text-center" variants={fadeInVariants}>
-                In this role, Sammy built the company's West African operations from the ground up, delivering over 100%
-                business growth against target in just nine months. He led market entry strategy, managed importation
-                logistics, secured key partnerships, and onboarded over 450 commercial accounts laying a strong
-                foundation for long-term profitability. By adapting global brand strategies for local markets, he
+                In this role, Sammy built the company&apos;s West African operations from the ground up, delivering over
+                100% business growth against target in just nine months. He led market entry strategy, managed
+                importation logistics, secured key partnerships, and onboarded over 450 commercial accounts laying a
+                strong foundation for long-term profitability. By adapting global brand strategies for local markets, he
                 boosted brand relevance and penetration, while mentoring high-performing B2B and B2C sales teams to
-                champion the portfolio's growth across Nigeria and Ghana.
+                champion the portfolio&apos;s growth across Nigeria and Ghana.
               </motion.p>
               <motion.p className="my-4 text-lg text-[#10172099] md:text-center" variants={fadeInVariants}>
                 Sammy Okwandu is a passionate commercial leader who has played a key role in introducing and growing

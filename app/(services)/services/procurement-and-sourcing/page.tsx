@@ -1,6 +1,6 @@
 "use client"
-import { useRef, useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
 import DashboardNav from "components/Navbar/DashboardNav"
 
@@ -139,7 +139,7 @@ export default function HeroSection() {
               Procurement & Sourcing
             </motion.p>
             <motion.p className="headfont mt-2 text-lg text-[#101720] md:text-center" variants={itemVariants}>
-              Hard to find bottles? I've got you covered.
+              Hard to find bottles? I&apos;ve got you covered.
             </motion.p>
 
             <motion.div
@@ -147,8 +147,8 @@ export default function HeroSection() {
               variants={scaleUp}
             >
               <motion.p className="mt-2 text-lg text-[#10172099] md:text-center" variants={fadeInVariants}>
-                Whether you're after rare vintages, limited editions, or the perfect bottle for a special moment, I tap
-                into trusted networks and auctions to source exceptional wines and spirits tailored just for you
+                Whether you&apos;re after rare vintages, limited editions, or the perfect bottle for a special moment, I
+                tap into trusted networks and auctions to source exceptional wines and spirits tailored just for you
               </motion.p>
 
               <motion.div
@@ -193,7 +193,7 @@ export default function HeroSection() {
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
               >
-                Let's Talk
+                Let&apos;s Talk
               </motion.a>
             </motion.div>
           </motion.div>

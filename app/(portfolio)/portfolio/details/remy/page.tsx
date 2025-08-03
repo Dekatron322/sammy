@@ -1,6 +1,6 @@
 "use client"
-import { useRef, useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
 import DashboardNav from "components/Navbar/DashboardNav"
 
@@ -154,10 +154,10 @@ export default function HeroSection() {
                   execution across channels.
                 </motion.p>
                 <motion.p className="my-4 text-lg text-[#10172099] md:text-center" variants={fadeInVariants}>
-                  Sammy Okwandu is a strategic commercial leader helping to shape the future of Rémy Cointreau's premium
-                  spirits across West Africa. As Area Manager for West Africa and Future Growth Markets, he oversees a
-                  wide portfolio of brands, leading operations from Lagos and Accra to connect global luxury with local
-                  markets.
+                  Sammy Okwandu is a strategic commercial leader helping to shape the future of Rémy Cointreau&apos;`s
+                  premium spirits across West Africa. As Area Manager for West Africa and Future Growth Markets, he
+                  oversees a wide portfolio of brands, leading operations from Lagos and Accra to connect global luxury
+                  with local markets.
                 </motion.p>
 
                 <motion.div

@@ -1,7 +1,7 @@
 "use client"
 
 import DashboardNav from "components/Navbar/DashboardNav"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
@@ -36,7 +36,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8 }}
             className="headfont text-5xl font-bold leading-[60px] text-[#73001A] md:text-6xl lg:text-5xl"
           >
-            I'm Sammy Okwandu,
+            I&apos;m Sammy Okwandu,
           </motion.h1>
 
           <motion.p
@@ -50,7 +50,7 @@ export default function HeroSection() {
 
           <p className="my-5 md:w-[575px]">
             Exploring the delicate balance of blends fuels my passion. Join me in discovering the rich stories,
-            cultures, craftsmanship, and business behind the world's most iconic wine and spirit brands.
+            cultures, craftsmanship, and business behind the world&apos;s most iconic wine and spirit brands.
           </p>
 
           <div className="mt-10 flex gap-7">

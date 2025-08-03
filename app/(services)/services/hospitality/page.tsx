@@ -1,6 +1,6 @@
 "use client"
-import { useRef, useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
 import DashboardNav from "components/Navbar/DashboardNav"
 
@@ -193,7 +193,7 @@ export default function HeroSection() {
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
               >
-                Let's Talk
+                Let&apos;s Talk
               </motion.a>
             </motion.div>
           </motion.div>

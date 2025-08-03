@@ -134,8 +134,8 @@ export default function HeroSection() {
               </h1>
 
               <p className="mb-14 text-gray-600">
-                I'm always open to new projects and conversations. Feel free to reach out anytime let's create something
-                unforgettable. Sláinte! 🍷
+                I&apos;m always open to new projects and conversations. Feel free to reach out anytime let&apos;s create
+                something unforgettable. Sláinte! 🍷
               </p>
 
               <div className="mb-8 border-l-2 border-[#800020] pl-2 ">
@@ -209,7 +209,7 @@ export default function HeroSection() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="rounded-md bg-[#73001A] px-8 py-3 text-white hover:bg-[#5a0015]"
                 >
-                  Let's talk
+                  Let&apos;s talk
                 </motion.button>
               </form>
             </>

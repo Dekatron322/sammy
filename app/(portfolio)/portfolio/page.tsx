@@ -1,9 +1,9 @@
 "use client"
 
-import { useRef, useState, useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import DashboardNav from "components/Navbar/DashboardNav"
 import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 export default function HeroSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)

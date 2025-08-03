@@ -1,6 +1,6 @@
 "use client"
-import { useRef, useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
 import DashboardNav from "components/Navbar/DashboardNav"
 
@@ -148,7 +148,7 @@ export default function HeroSection() {
             variants={containerVariants}
           >
             <motion.p className="headfont text-5xl font-semibold text-[#800020]" variants={itemVariants}>
-              Elevating Diageo's Premium Spirits
+              Elevating Diageo&apos;s Premium Spirits
             </motion.p>
             <motion.p className="headfont mt-2 text-lg text-[#101720] md:text-center" variants={itemVariants}>
               Shaping strategy, growing sales, and building standout premium spirits experiences
@@ -165,14 +165,14 @@ export default function HeroSection() {
                 In this role, Sammy drove over £28 million in gross sales and more than 122,000 nine-litre case
                 depletions in a single fiscal year. He managed multi-million-pound customer marketing budgets,
                 delivering consistent 20%+ ROI through focused below-the-line activations and smart commercial planning.
-                His leadership strengthened Diageo's market share, opened new commercial accounts, and streamlined
+                His leadership strengthened Diageo&apos;s market share, opened new commercial accounts, and streamlined
                 partnerships, ensuring flawless execution across channels.
               </motion.p>
               <motion.p className="my-4 text-lg text-[#10172099] md:text-center" variants={fadeInVariants}>
-                Sammy Okwandu is a dynamic marketing leader who helped shape Diageo's premium spirits business in
+                Sammy Okwandu is a dynamic marketing leader who helped shape Diageo&apos;s premium spirits business in
                 Nigeria. As Head of Customer Marketing for International Premium Spirits and Reserve Brands, he brought
-                fresh strategies, strong commercial vision, and a passion for growing iconic brands in one of Africa's
-                most vibrant markets.
+                fresh strategies, strong commercial vision, and a passion for growing iconic brands in one of
+                Africa&apos;s most vibrant markets.
               </motion.p>
 
               <motion.div

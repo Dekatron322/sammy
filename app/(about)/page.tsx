@@ -1,7 +1,7 @@
 "use client"
 
 import DashboardNav from "components/Navbar/DashboardNav"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
@@ -75,7 +75,7 @@ export default function HeroSection() {
               isMobile ? "text-white" : ""
             }`}
           >
-            Hi, <span className="text-[#73001A]">I'm Sammy! </span>
+            Hi, <span className="text-[#73001A]">I&apos;m Sammy! </span>
             <br className="max-sm:hidden" />
             Wines & Spirits <span className="text-[#73001A]">Enthusiast.</span>
           </motion.h1>
@@ -86,8 +86,8 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className={`mb-8 max-w-md text-lg ${isMobile ? "text-white" : ""}`}
           >
-            I'm Sammy Okwandu, a passionate connoisseur of wines and spirits. Unraveling flavors is more than a pastime
-            — it's a journey.
+            I&apos;m Sammy Okwandu, a passionate connoisseur of wines and spirits. Unraveling flavors is more than a
+            pastime — it&apos;s a journey.
           </motion.p>
 
           <motion.a

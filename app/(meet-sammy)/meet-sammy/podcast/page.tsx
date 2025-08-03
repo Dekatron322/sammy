@@ -1,6 +1,6 @@
 "use client"
 import DashboardNav from "components/Navbar/DashboardNav"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
