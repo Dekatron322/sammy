@@ -10,6 +10,8 @@ export default function HeroSection() {
   const [scrollPosition, setScrollPosition] = useState(0)
   const [maxScroll, setMaxScroll] = useState(0)
   const [isHovered, setIsHovered] = useState<number | null>(null)
+  const [cardWidth, setCardWidth] = useState(0)
+  const [containerWidth, setContainerWidth] = useState(0)
 
   useEffect(() => {
     const container = scrollContainerRef.current
@@ -17,6 +19,12 @@ export default function HeroSection() {
       const updateScrollData = () => {
         setScrollPosition(container.scrollLeft)
         setMaxScroll(container.scrollWidth - container.clientWidth)
+        setContainerWidth(container.clientWidth)
+
+        // Calculate card width based on container width (3 cards + gaps)
+        const gap = 10 // gap between cards
+        const cardWidth = (container.clientWidth - 2 * gap) / 3
+        setCardWidth(cardWidth)
       }
 
       updateScrollData()
@@ -34,7 +42,7 @@ export default function HeroSection() {
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
-        left: -300,
+        left: -cardWidth * 3, // Scroll by 3 cards width
         behavior: "smooth",
       })
     }
@@ -43,7 +51,7 @@ export default function HeroSection() {
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
-        left: 300,
+        left: cardWidth * 3, // Scroll by 3 cards width
         behavior: "smooth",
       })
     }
@@ -63,7 +71,7 @@ export default function HeroSection() {
       subtitle: "Portfolio",
       image: "/fresh-images/ricard.png",
       logo: "/fresh-images/ricard.svg",
-      imageClass: "absolute -right-10 top-0 z-10 w-[602px]",
+      imageClass: "absolute -right-10 top-0 z-10 w-[500px]",
       imageStyle: { transform: "translateY(-10%)" },
     },
     {
@@ -85,7 +93,7 @@ export default function HeroSection() {
       subtitle: "Portfolio",
       image: "/fresh-images/global.png",
       logo: "/fresh-images/global.svg",
-      imageClass: "absolute -right-20  max-sm:-right-10 z-10 w-[750px]",
+      imageClass: "absolute -right-16 -top-[6%] max-sm:-right-10 z-10 w-[800px]",
       titleClass: "w-[285px]",
       imageStyle: { transform: "translateY(-10%)" },
     },
@@ -97,8 +105,9 @@ export default function HeroSection() {
       subtitle: "Portfolio",
       image: "/fresh-images/diageo2.svg",
       logo: "/fresh-images/diageo.svg",
-      imageClass: "absolute -top-[1%] right-10 z-10 w-[144px]",
+      imageClass: "absolute  right-10 z-10 w-[140px]",
       titleClass: "w-[285px]",
+      imageStyle: { transform: "translateY(-10%)" },
     },
     {
       id: 5,
@@ -108,7 +117,7 @@ export default function HeroSection() {
       subtitle: "Portfolio",
       image: "/fresh-images/remy.svg",
       logo: "/fresh-images/remyc.svg",
-      imageClass: "absolute top-[5%] right-10 z-10 w-[144px]",
+      imageClass: "absolute top-[5%] right-10 z-10 w-[120px]",
       titleClass: "w-[285px]",
     },
   ]
@@ -130,7 +139,7 @@ export default function HeroSection() {
         <div className="relative">
           <div
             ref={scrollContainerRef}
-            className="flex gap-10 overflow-x-auto scroll-smooth pt-14 max-sm:mt-10 md:mt-20"
+            className="flex gap-5 overflow-x-auto scroll-smooth pt-14 max-sm:mt-10 "
             style={{
               scrollbarWidth: "none",
               scrollSnapType: "x mandatory",
@@ -141,8 +150,11 @@ export default function HeroSection() {
               <Link
                 key={item.id}
                 href={item.href}
-                className={`relative flex h-[400px] flex-shrink-0 items-center justify-between overflow-visible rounded-lg max-sm:h-[300px] max-sm:w-[400px] md:min-w-[calc(50%-20px)] ${item.bgColor} p-8`}
-                style={{ scrollSnapAlign: "start" }}
+                className={`relative flex h-[330px] flex-shrink-0 items-center justify-between overflow-visible rounded-lg max-sm:h-[300px] ${item.bgColor} p-8`}
+                style={{
+                  scrollSnapAlign: "start",
+                  width: cardWidth > 0 ? `${cardWidth}px` : "calc((100% - 20px) / 3)",
+                }}
                 onMouseEnter={() => setIsHovered(item.id)}
                 onMouseLeave={() => setIsHovered(null)}
               >
@@ -152,7 +164,7 @@ export default function HeroSection() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  <p className={`headfont text-3xl text-white max-sm:text-xl ${item.titleClass || ""}`}>{item.title}</p>
+                  <p className={`headfont text-2xl text-white max-sm:text-xl ${item.titleClass || ""}`}>{item.title}</p>
                   <p className="text-white">{item.subtitle}</p>
                 </motion.div>
 
@@ -195,7 +207,7 @@ export default function HeroSection() {
             ))}
           </div>
 
-          <div className="paddings relative mt-24 flex items-center justify-between">
+          <div className="paddings relative mt-10 flex items-center justify-between">
             <motion.button
               onClick={scrollLeft}
               disabled={isLeftDisabled}
@@ -217,7 +229,7 @@ export default function HeroSection() {
               </svg>
             </motion.button>
 
-            <div className="absolute left-0 right-0 mx-auto flex w-[calc(100%-120px)] items-center md:w-[calc(100%-290px)]">
+            <div className="absolute left-0 right-0 mx-auto flex w-[calc(100%-120px)] items-center xl:w-[calc(100%-190px)] 2xl:w-[calc(100%-290px)]">
               <div className="relative h-1 w-full bg-gray-300">
                 <motion.div
                   className="absolute left-0 top-0 h-full bg-[#800020]"

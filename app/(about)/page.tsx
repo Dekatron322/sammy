@@ -109,7 +109,7 @@ export default function HeroSection() {
                 initial={{ x: 0, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 0, opacity: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 1.5 }}
                 className="absolute bottom-0 right-0 top-0 z-10 h-full w-full transform rounded-lg md:rotate-12"
               >
                 <Image src={currentFirstImage!} alt="Spirits bottle" fill className="object-cover" priority />

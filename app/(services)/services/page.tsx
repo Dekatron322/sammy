@@ -156,7 +156,7 @@ export default function HeroSection() {
             </button>
 
             {/* Connecting line with dynamic gradient - now properly constrained between arrows */}
-            <div className="absolute left-0 right-0 mx-auto flex w-[calc(100%-290px)] items-center max-sm:w-[calc(100%-120px)] ">
+            <div className="absolute left-0 right-0 mx-auto flex w-[calc(100%-120px)] items-center xl:w-[calc(100%-190px)] 2xl:w-[calc(100%-290px)]">
               <div className="relative h-1 w-full bg-gray-300">
                 <div
                   className="absolute left-0 top-0 h-full bg-[#800020] transition-all duration-300"

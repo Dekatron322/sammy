@@ -12,23 +12,15 @@ const satoshi = {
 }
 
 export const metadata: Metadata = {
-  title: "Chats",
+  title: "sammyokwandu",
   description:
-    "CHATS transforms the future of humanitarian efforts with verifiable solutions for cash and voucher aid. Our platform enhances donor confidence and enables NGOs to deliver impactful, transparent campaign",
-  icons: {
-    icon: [
-      { url: "/chats transparent 1.png" },
-      { url: "/chats transparent 1.png", sizes: "16x16", type: "image/png" },
-      { url: "/chats transparent 1.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png" }],
-    other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#5bbad5" }],
-  },
+    "I'm Sammy Okwandu, a passionate connoisseur of wines and spirits. Unraveling flavors is more than a pastime — it's a journey.",
+
   twitter: {
     card: "summary_large_image",
   },
   openGraph: {
-    url: "https://github.com/Dekatron322/chat-landing/blob/main/public/body.jpeg?raw=true",
+    url: "#",
     images: [
       {
         width: 1200,

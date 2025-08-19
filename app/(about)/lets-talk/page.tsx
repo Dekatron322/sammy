@@ -6,10 +6,25 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { useState } from "react"
 
+interface ChatMessage {
+  sender: string
+  text: string
+}
+
+interface ApiChatHistory {
+  query: string
+  resp: string
+  email: string
+  results: Array<{
+    user: string
+    bot: string
+  }>
+}
+
 export default function HeroSection() {
   const [isChatOpen, setIsChatOpen] = useState(false)
-  const [chatHistory, setChatHistory] = useState<Array<Array<{ sender: string; text: string }>>>([])
-  const [currentChat, setCurrentChat] = useState<Array<{ sender: string; text: string }>>([
+  const [chatHistory, setChatHistory] = useState<ChatMessage[][]>([])
+  const [currentChat, setCurrentChat] = useState<ChatMessage[]>([
     {
       sender: "bot",
       text: "Hi there, great to have you here!",
@@ -29,14 +44,50 @@ export default function HeroSection() {
     contact: "",
     message: "",
   })
+  const [isLoading, setIsLoading] = useState(false)
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsChatOpen(true)
-    // You can add logic here to send the form data to your backend if needed
+  const fetchChatHistory = async (email: string) => {
+    if (!email) return
+
+    setIsLoading(true)
+    try {
+      const response = await fetch(`http://api.sammyokwandu.com/messages/${email}/`)
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const data: ApiChatHistory = (await response.json()) as any
+
+      // Convert API response to chat history format
+      const history: ChatMessage[][] = []
+      data.results.forEach((result) => {
+        history.push([
+          { sender: "user", text: result.user },
+          { sender: "bot", text: result.bot },
+        ])
+      })
+
+      setChatHistory(history)
+    } catch (error) {
+      console.error("Failed to fetch chat history:", error)
+      // Set empty array instead of leaving it undefined
+      setChatHistory([])
+    } finally {
+      setIsLoading(false)
+    }
   }
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    // If contact field contains an email, fetch chat history
+    if (formData.contact.includes("@")) {
+      await fetchChatHistory(formData.contact)
+    }
+
+    setIsChatOpen(true)
+  }
+
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault()
     if (newMessage.trim() === "") return
 
@@ -45,8 +96,42 @@ export default function HeroSection() {
     setCurrentChat(updatedChat)
     setNewMessage("")
 
-    // Simulate bot response after a delay
-    setTimeout(() => {
+    setIsLoading(true)
+    try {
+      // Send message to API
+      const response = await fetch(`http://api.sammyokwandu.com/messages/${formData.contact}/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          query: newMessage,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      const data = await response.json()
+
+      // Add bot response to chat
+      const withBotResponse = [
+        ...updatedChat,
+        {
+          sender: "bot",
+          text:
+            typeof data === "object" && data !== null && "resp" in data
+              ? (data as { resp: string }).resp
+              : "Thanks for your message! I'll get back to you with more information soon.",
+        },
+      ]
+      setCurrentChat(withBotResponse)
+    } catch (error) {
+      console.error("Failed to send message:", error)
+
+      // Fallback response if API fails
       const withBotResponse = [
         ...updatedChat,
         {
@@ -55,7 +140,9 @@ export default function HeroSection() {
         },
       ]
       setCurrentChat(withBotResponse)
-    }, 1000)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const startNewChat = () => {
@@ -82,7 +169,16 @@ export default function HeroSection() {
     if (currentChat.length > 0) {
       setChatHistory([...chatHistory, currentChat])
     }
-    setCurrentChat(chatHistory[chatIndex] as any)
+
+    // Use optional chaining and provide fallback to prevent undefined error
+    const chatToLoad = chatHistory[chatIndex] ?? [
+      {
+        sender: "bot",
+        text: "Starting a new conversation. How can I help you today?",
+      },
+    ]
+
+    setCurrentChat(chatToLoad)
     setIsChatOpen(true)
   }
 
@@ -99,9 +195,9 @@ export default function HeroSection() {
     >
       <DashboardNav />
 
-      <div className=" flex h-[calc(100vh-80px)]  items-center gap-6 max-sm:h-screen md:px-24">
+      <div className=" flex h-[calc(100vh-80px)] items-center  gap-6 max-sm:h-screen md:mt-24 md:px-10 2xl:mt-0 2xl:px-24">
         {isChatOpen && (
-          <div className="flex h-[550px] w-[250px] flex-col justify-between rounded-xl bg-[#FFFFFFCC] p-2 max-sm:hidden">
+          <div className=" flex h-[550px] w-[250px] flex-col justify-between rounded-xl bg-[#FFFFFFCC] p-2 max-sm:hidden">
             <div className="flex w-full flex-col gap-4">
               <p className="border-b border-[#80002033]">Chat History</p>
               <button
@@ -111,10 +207,16 @@ export default function HeroSection() {
                 <PlusIcon />
                 Start New Chat
               </button>
-              <div className="itens-center flex w-full gap-2 overflow-hidden rounded-lg bg-[#FFFFFFCC] p-2">
-                <RecentChatIcon />
-                <p>More about what you...</p>
-              </div>
+              {chatHistory.map((chat, index) => (
+                <button
+                  key={index}
+                  onClick={() => loadChatFromHistory(index)}
+                  className="itens-center flex w-full gap-2 overflow-hidden rounded-lg bg-[#FFFFFFCC] p-2 hover:bg-gray-100"
+                >
+                  <RecentChatIcon />
+                  <p className="truncate">{chat[0]?.text.substring(0, 20)}...</p>
+                </button>
+              ))}
             </div>
             <button
               onClick={clearCurrentChat}
@@ -129,11 +231,11 @@ export default function HeroSection() {
         <div className="w-full max-w-3xl rounded-lg bg-[#FFFFFFCC] bg-opacity-90 p-8 shadow-lg backdrop-blur-sm max-sm:h-screen max-sm:p-4">
           {!isChatOpen ? (
             <>
-              <h1 className="headfont mb-2 text-5xl font-bold text-[#800020] max-sm:mt-14 max-sm:text-3xl">
+              <h1 className="headfont  text-5xl font-bold text-[#800020] max-sm:mt-14 max-sm:text-3xl">
                 What would you like to know?
               </h1>
 
-              <p className="mb-14 text-gray-600">
+              <p className="mb-4 text-gray-600">
                 I&apos;m always open to new projects and conversations. Feel free to reach out anytime let&apos;s create
                 something unforgettable. Sláinte! 🍷
               </p>
@@ -177,6 +279,7 @@ export default function HeroSection() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="mt-1  w-full max-w-xl rounded-md bg-[#F5F5F5] p-2 shadow-sm focus:border-[#800020] focus:ring-[#800020]"
+                    required
                   />
                 </div>
 
@@ -187,7 +290,8 @@ export default function HeroSection() {
                     value={formData.contact}
                     onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
                     className="mt-1  w-full max-w-xl rounded-md bg-[#F5F5F5] p-2 shadow-sm focus:border-[#800020] focus:ring-[#800020]"
-                    placeholder="Where can I reach you?"
+                    placeholder="Your email address"
+                    required
                   />
                 </div>
 
@@ -199,6 +303,7 @@ export default function HeroSection() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Let's talk wines & spirits. what's on your mind?"
                     className="mt-1  w-full max-w-xl rounded-md bg-[#F5F5F5] p-2 shadow-sm focus:border-[#800020] focus:ring-[#800020]"
+                    required
                   ></textarea>
                 </div>
 
@@ -207,17 +312,22 @@ export default function HeroSection() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="rounded-md bg-[#73001A] px-8 py-3 text-white hover:bg-[#5a0015]"
+                  className="rounded-md bg-[#73001A] px-8 py-3 text-white hover:bg-[#5a0015] disabled:opacity-50"
+                  disabled={isLoading}
                 >
-                  Let&apos;s talk
+                  {isLoading ? "Loading..." : "Let's talk"}
                 </motion.button>
               </form>
             </>
           ) : (
             <div className="flex h-[500px] flex-col max-sm:mt-14">
               <div className="mb-4 flex w-full justify-between border-b-2 border-[#80002033] pb-2">
-                <ReturnIcon />
-                <DeleteIcon2 />
+                <button onClick={() => setIsChatOpen(false)}>
+                  <ReturnIcon />
+                </button>
+                <button onClick={clearCurrentChat}>
+                  <DeleteIcon2 />
+                </button>
               </div>
               <div className="mb-4 flex-1 space-y-4 overflow-y-auto">
                 {currentChat.length === 0 ? (
@@ -237,6 +347,11 @@ export default function HeroSection() {
                     </div>
                   ))
                 )}
+                {isLoading && (
+                  <div className="flex justify-start">
+                    <div className="max-w-xs rounded-lg bg-gray-100 px-4 py-2 text-gray-800">Thinking...</div>
+                  </div>
+                )}
               </div>
 
               <form onSubmit={handleSendMessage} className="flex gap-2 ">
@@ -246,8 +361,13 @@ export default function HeroSection() {
                   onChange={(e) => setNewMessage(e.target.value)}
                   placeholder="Type your message..."
                   className="flex-1 rounded-md bg-[#F5F5F5] p-2 shadow-sm focus:border-[#800020] focus:ring-[#800020]"
+                  disabled={isLoading}
                 />
-                <button type="submit" className="rounded-md bg-[#73001A] px-4 py-2 text-white hover:bg-[#5a0015]">
+                <button
+                  type="submit"
+                  className="rounded-md bg-[#73001A] px-4 py-2 text-white hover:bg-[#5a0015] disabled:opacity-50"
+                  disabled={isLoading || newMessage.trim() === ""}
+                >
                   Send
                 </button>
               </form>
