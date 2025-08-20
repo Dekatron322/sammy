@@ -51,7 +51,7 @@ export default function HeroSection() {
 
     setIsLoading(true)
     try {
-      const response = await fetch(`http://api.sammyokwandu.com/messages/${email}/`)
+      const response = await fetch(`https://api.sammyokwandu.com/messages/${email}/`)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
@@ -99,7 +99,7 @@ export default function HeroSection() {
     setIsLoading(true)
     try {
       // Send message to API
-      const response = await fetch(`http://api.sammyokwandu.com/messages/${formData.contact}/`, {
+      const response = await fetch(`https://api.sammyokwandu.com/messages/${formData.contact}/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
