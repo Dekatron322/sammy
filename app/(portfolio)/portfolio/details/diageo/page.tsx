@@ -147,7 +147,10 @@ export default function HeroSection() {
             className="mt-7 flex w-full flex-col justify-center md:items-center md:text-center"
             variants={containerVariants}
           >
-            <motion.p className="headfont text-5xl font-semibold text-[#800020]" variants={itemVariants}>
+            <motion.p
+              className="headfont text-5xl font-semibold text-[#800020] max-sm:text-3xl"
+              variants={itemVariants}
+            >
               Elevating Diageo&apos;s Premium Spirits
             </motion.p>
             <motion.p className="headfont mt-2 text-lg text-[#101720] md:text-center" variants={itemVariants}>
@@ -176,12 +179,12 @@ export default function HeroSection() {
               </motion.p>
 
               <motion.div
-                className="flex w-full items-center justify-center gap-2 rounded-md bg-[#FF972DCC] p-2"
+                className="flex w-full items-center justify-between gap-2 rounded-md bg-[#FF972DCC] p-2"
                 variants={scaleUp}
                 whileHover={{ scale: 1.05 }}
               >
                 <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-                <motion.p className="font-bold text-white" variants={fadeInVariants}>
+                <motion.p className="font-bold text-white max-sm:text-center max-sm:text-sm" variants={fadeInVariants}>
                   £28M in gross sales
                 </motion.p>
                 <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />

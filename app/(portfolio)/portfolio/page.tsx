@@ -12,8 +12,17 @@ export default function HeroSection() {
   const [isHovered, setIsHovered] = useState<number | null>(null)
   const [cardWidth, setCardWidth] = useState(0)
   const [containerWidth, setContainerWidth] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    // Check if we're on a mobile device
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+
+    // Initial check
+    checkIsMobile()
+
     const container = scrollContainerRef.current
     if (container) {
       const updateScrollData = () => {
@@ -21,28 +30,33 @@ export default function HeroSection() {
         setMaxScroll(container.scrollWidth - container.clientWidth)
         setContainerWidth(container.clientWidth)
 
-        // Calculate card width based on container width (3 cards + gaps)
+        // Calculate card width based on container width
         const gap = 10 // gap between cards
-        const cardWidth = (container.clientWidth - 2 * gap) / 3
-        setCardWidth(cardWidth)
+
+        // For mobile, use full width minus gap; for desktop, use 3 cards
+        const calculatedCardWidth = isMobile ? container.clientWidth - gap : (container.clientWidth - 2 * gap) / 3
+
+        setCardWidth(calculatedCardWidth)
       }
 
       updateScrollData()
       container.addEventListener("scroll", updateScrollData)
-
-      window.addEventListener("resize", updateScrollData)
+      window.addEventListener("resize", () => {
+        checkIsMobile()
+        updateScrollData()
+      })
 
       return () => {
         container.removeEventListener("scroll", updateScrollData)
         window.removeEventListener("resize", updateScrollData)
       }
     }
-  }, [])
+  }, [isMobile])
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
-        left: -cardWidth * 3, // Scroll by 3 cards width
+        left: -cardWidth * (isMobile ? 1 : 3), // Scroll by 1 card on mobile, 3 on desktop
         behavior: "smooth",
       })
     }
@@ -51,7 +65,7 @@ export default function HeroSection() {
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
-        left: cardWidth * 3, // Scroll by 3 cards width
+        left: cardWidth * (isMobile ? 1 : 3), // Scroll by 1 card on mobile, 3 on desktop
         behavior: "smooth",
       })
     }
@@ -150,10 +164,15 @@ export default function HeroSection() {
               <Link
                 key={item.id}
                 href={item.href}
-                className={`relative flex h-[330px] flex-shrink-0 items-center justify-between overflow-visible rounded-lg max-sm:h-[300px] ${item.bgColor} p-8`}
+                className={`relative flex h-[330px] flex-shrink-0 items-center justify-between overflow-visible rounded-lg max-sm:h-[300px] max-sm:w-full ${item.bgColor} p-8`}
                 style={{
                   scrollSnapAlign: "start",
-                  width: cardWidth > 0 ? `${cardWidth}px` : "calc((100% - 20px) / 3)",
+                  // Apply different width calculation for mobile vs desktop
+                  width: isMobile
+                    ? "calc(100% - 10px)" // Full width minus gap for mobile
+                    : cardWidth > 0
+                    ? `${cardWidth}px`
+                    : "calc((100% - 20px) / 3)",
                 }}
                 onMouseEnter={() => setIsHovered(item.id)}
                 onMouseLeave={() => setIsHovered(null)}
@@ -269,6 +288,12 @@ export default function HeroSection() {
       <style jsx>{`
         .overflow-x-auto::-webkit-scrollbar {
           display: none;
+        }
+
+        @media (max-width: 768px) {
+          .overflow-x-auto {
+            scroll-snap-type: x mandatory;
+          }
         }
       `}</style>
     </section>

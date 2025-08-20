@@ -105,11 +105,11 @@ export default function HeroSection() {
         <div className="relative">
           <div
             ref={scrollContainerRef}
-            className="flex gap-10 overflow-x-auto scroll-smooth py-4"
+            className="flex gap-10 overflow-x-auto scroll-smooth py-4 max-sm:mt-10"
             style={{ scrollbarWidth: "none" }}
           >
             {services.map((service, index) => (
-              <Link href={service.readMoreLink} key={index} className="relative w-[555px] flex-shrink-0">
+              <Link href={service.readMoreLink} key={index} className="relative w-[555px] flex-shrink-0 max-sm:w-full">
                 <img src={service.image} alt={service.title} className="h-auto w-full rounded-lg" />
                 <motion.div
                   className="absolute bottom-0 left-0 right-0 z-50 flex h-[122px] items-center rounded-b-lg p-8"
@@ -135,7 +135,7 @@ export default function HeroSection() {
             ))}
           </div>
 
-          <div className="paddings relative mt-24 flex items-center justify-between">
+          <div className="paddings relative flex items-center justify-between max-sm:mt-10 md:mt-24">
             <button
               onClick={scrollLeft}
               disabled={isLeftDisabled}

@@ -161,12 +161,15 @@ export default function HeroSection() {
                 </motion.p>
 
                 <motion.div
-                  className="flex w-full items-center justify-center gap-2 rounded-md bg-[#FF972DCC] p-2"
+                  className="flex w-full items-center justify-between gap-2 rounded-md bg-[#FF972DCC] p-2"
                   variants={scaleUp}
                   whileHover={{ scale: 1.05 }}
                 >
                   <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-                  <motion.p className="font-bold text-white" variants={fadeInVariants}>
+                  <motion.p
+                    className="font-bold text-white max-sm:text-center max-sm:text-sm"
+                    variants={fadeInVariants}
+                  >
                     Full P&L oversight across West Africa
                   </motion.p>
                   <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
