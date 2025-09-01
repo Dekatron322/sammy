@@ -124,7 +124,7 @@ export default function HeroSection() {
             <motion.img
               src="/fresh-images/ricard.png"
               alt=""
-              className="absolute -right-10 top-0 z-10 w-[602px] max-sm:-top-8"
+              className="absolute -right-10 -top-14 z-10 w-[550px] max-sm:-top-8"
               style={{ transform: "translateY(-14%)" }}
               variants={slideInFromRight}
             />

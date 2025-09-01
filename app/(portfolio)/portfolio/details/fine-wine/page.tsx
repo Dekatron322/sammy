@@ -114,9 +114,9 @@ export default function HeroSection() {
               <p className="text-white">Portfolio</p>
             </div>
             <img
-              src="/fresh-images/global.png"
+              src="/fresh-images/gfw.png"
               alt=""
-              className="absolute z-10 w-[750px] max-sm:-right-12 max-sm:-top-[18%] md:-right-20 md:-top-[30%]"
+              className="absolute z-10 w-[220px] max-sm:-right-0 max-sm:-top-[8%] max-sm:w-[140px] md:-right-0 md:-top-[10%]"
             />
             <div className="absolute bottom-0 left-0 right-0 z-10 flex h-[122px] items-center rounded-b-lg bg-[#FF972D] p-8">
               <img src="/fresh-images/global.svg" alt="" />

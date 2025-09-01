@@ -105,9 +105,9 @@ export default function HeroSection() {
       bgColor: "bg-[#742C33]",
       title: "Global fine wines and champagnes",
       subtitle: "Portfolio",
-      image: "/fresh-images/global.png",
+      image: "/fresh-images/gfw.png",
       logo: "/fresh-images/global.svg",
-      imageClass: "absolute -right-16 -top-[6%] max-sm:-right-10 z-10 w-[800px]",
+      imageClass: "absolute -right-0 -top-[1%] max-sm:-right-10 z-10 w-[180px]",
       titleClass: "w-[285px]",
       imageStyle: { transform: "translateY(-10%)" },
     },
@@ -178,13 +178,13 @@ export default function HeroSection() {
                 onMouseLeave={() => setIsHovered(null)}
               >
                 <motion.div
-                  className="relative z-10"
+                  className="relative z-10 mb-10 "
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
                   <p className={`headfont text-2xl text-white max-sm:text-xl ${item.titleClass || ""}`}>{item.title}</p>
-                  <p className="text-white">{item.subtitle}</p>
+                  <p className=" text-white">{item.subtitle}</p>
                 </motion.div>
 
                 <motion.img

@@ -195,9 +195,9 @@ export default function HeroSection() {
     >
       <DashboardNav />
 
-      <div className=" flex h-[calc(100vh-80px)] items-center  gap-6 max-sm:h-screen md:mt-24 md:px-10 2xl:mt-0 2xl:px-24">
+      <div className=" flex h-[calc(100vh-80px)] items-center  gap-6 max-sm:h-screen  md:px-10 2xl:mt-0 3xl:px-24">
         {isChatOpen && (
-          <div className=" flex h-[550px] w-[250px] flex-col justify-between rounded-xl bg-[#FFFFFFCC] p-2 max-sm:hidden">
+          <div className=" flex h-[500px] min-w-[250px] flex-col justify-between rounded-xl bg-[#FFFFFFCC] p-2 max-sm:hidden sm:mt-32">
             <div className="flex w-full flex-col gap-4">
               <p className="border-b border-[#80002033]">Chat History</p>
               <button
@@ -228,10 +228,10 @@ export default function HeroSection() {
           </div>
         )}
 
-        <div className="w-full max-w-3xl rounded-lg bg-[#FFFFFFCC] bg-opacity-90 p-8 shadow-lg backdrop-blur-sm max-sm:h-screen max-sm:p-4">
+        <div className="flex w-full">
           {!isChatOpen ? (
-            <>
-              <h1 className="headfont  text-5xl font-bold text-[#800020] max-sm:mt-14 max-sm:text-3xl">
+            <div className="w-full max-w-3xl rounded-lg bg-[#FFFFFFCC] bg-opacity-90 p-8 shadow-lg backdrop-blur-sm max-sm:h-screen max-sm:p-4 sm:mt-32 3xl:mt-0">
+              <h1 className="headfont font-bold  text-[#800020] max-sm:mt-14 max-sm:text-3xl sm:text-3xl 2xl:text-5xl">
                 What would you like to know?
               </h1>
 
@@ -318,9 +318,9 @@ export default function HeroSection() {
                   {isLoading ? "Loading..." : "Let's talk"}
                 </motion.button>
               </form>
-            </>
+            </div>
           ) : (
-            <div className="flex h-[500px] flex-col max-sm:mt-14">
+            <div className="flex h-[500px] w-full  flex-col rounded-lg bg-[#FFFFFFCC] bg-opacity-90 p-8 shadow-lg backdrop-blur-sm max-sm:mt-14 max-sm:h-screen max-sm:p-4 sm:mt-32 3xl:mt-0">
               <div className="mb-4 flex w-full justify-between border-b-2 border-[#80002033] pb-2">
                 <button onClick={() => setIsChatOpen(false)}>
                   <ReturnIcon />
@@ -354,7 +354,7 @@ export default function HeroSection() {
                 )}
               </div>
 
-              <form onSubmit={handleSendMessage} className="flex gap-2 ">
+              <form onSubmit={handleSendMessage} className="flex w-full gap-2 ">
                 <input
                   type="text"
                   value={newMessage}
