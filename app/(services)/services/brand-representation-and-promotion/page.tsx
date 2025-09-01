@@ -189,7 +189,7 @@ export default function HeroSection() {
 
               <motion.a
                 href="/lets-talk"
-                className="flex w-36 justify-center rounded-md border border-[#73001A] px-8 py-3 text-[#101720CC] transition-all duration-200 ease-in-out hover:bg-[#80002066]"
+                className="flex w-36 rounded-md border border-[#73001A] px-8 py-3 text-center text-[#101720CC] transition-all duration-200 ease-in-out hover:bg-[#73001A] hover:text-white"
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
               >
