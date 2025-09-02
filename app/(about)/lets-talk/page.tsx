@@ -197,7 +197,7 @@ export default function HeroSection() {
 
       <div className=" flex h-[calc(100vh-80px)] items-center  gap-6 max-sm:h-screen  md:px-10 2xl:mt-0 3xl:px-24">
         {isChatOpen && (
-          <div className=" flex h-[500px] min-w-[250px] flex-col justify-between rounded-xl bg-[#FFFFFFCC] p-2 max-sm:hidden sm:mt-32">
+          <div className=" flex h-[500px] min-w-[250px] flex-col justify-between rounded-xl bg-[#FFFFFFCC] p-2 max-sm:hidden sm:mt-32 3xl:mt-0">
             <div className="flex w-full flex-col gap-4">
               <p className="border-b border-[#80002033]">Chat History</p>
               <button
