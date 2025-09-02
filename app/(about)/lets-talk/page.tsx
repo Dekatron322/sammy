@@ -24,20 +24,7 @@ interface ApiChatHistory {
 export default function HeroSection() {
   const [isChatOpen, setIsChatOpen] = useState(false)
   const [chatHistory, setChatHistory] = useState<ChatMessage[][]>([])
-  const [currentChat, setCurrentChat] = useState<ChatMessage[]>([
-    {
-      sender: "bot",
-      text: "Hi there, great to have you here!",
-    },
-    {
-      sender: "bot",
-      text: "Wines and spirits are a fusion of artistry, culture, and craftsmanship. Wines, made from fermented grapes, vary in flavor based on region and aging. Spirits like whiskey, rum, and vodka are distilled, each with unique characteristics.",
-    },
-    {
-      sender: "bot",
-      text: "I explore and share insights on flavors, pairings, and the stories behind renowned brands, helping enthusiasts and newcomers appreciate every sip.",
-    },
-  ])
+  const [currentChat, setCurrentChat] = useState<ChatMessage[]>([])
   const [newMessage, setNewMessage] = useState("")
   const [formData, setFormData] = useState({
     name: "",
@@ -82,6 +69,60 @@ export default function HeroSection() {
     // If contact field contains an email, fetch chat history
     if (formData.contact.includes("@")) {
       await fetchChatHistory(formData.contact)
+    }
+
+    // Add the initial message from the form to the chat
+    if (formData.message.trim() !== "") {
+      const updatedChat = [...currentChat, { sender: "user", text: formData.message }]
+      setCurrentChat(updatedChat)
+
+      // Send the initial message to the API
+      setIsLoading(true)
+      try {
+        const response = await fetch(`https://api.sammyokwandu.com/messages/${formData.contact}/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            query: formData.message,
+          }),
+        })
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+
+        const data = await response.json()
+
+        // Add bot response to chat
+        const withBotResponse = [
+          ...updatedChat,
+          {
+            sender: "bot",
+            text:
+              typeof data === "object" && data !== null && "resp" in data
+                ? (data as { resp: string }).resp
+                : "Thanks for your message! I'll get back to you with more information soon.",
+          },
+        ]
+        setCurrentChat(withBotResponse)
+      } catch (error) {
+        console.error("Failed to send message:", error)
+
+        // Fallback response if API fails
+        const withBotResponse = [
+          ...updatedChat,
+          {
+            sender: "bot",
+            text: "Thanks for your message! I'll get back to you with more information soon.",
+          },
+        ]
+        setCurrentChat(withBotResponse)
+      } finally {
+        setIsLoading(false)
+      }
     }
 
     setIsChatOpen(true)
