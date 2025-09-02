@@ -7,7 +7,6 @@ import { useEffect, useState } from "react"
 
 export default function HeroSection() {
   const firstImages = ["/fresh-images/bg.png", "/fresh-images/bg2.png", "/fresh-images/bg5.png"] as const
-
   const secondImages = ["/fresh-images/bg1.png", "/fresh-images/bg3.png", "/fresh-images/bg4.png"] as const
 
   const mobileBgImages = [
@@ -34,16 +33,29 @@ export default function HeroSection() {
   }, [])
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isMobile) {
-        setCurrentFirstImageIndex((prev) => (prev === firstImages.length - 1 ? 0 : prev + 1))
+    if (isMobile) {
+      const interval = setInterval(() => {
+        setCurrentMobileBgIndex((prev) => (prev === mobileBgImages.length - 1 ? 0 : prev + 1))
+      }, 4000)
+      return () => clearInterval(interval)
+    }
+
+    let step = 0
+    const cycle = () => {
+      if (step % 2 === 0) {
+        // Change secondImages first
         setCurrentSecondImageIndex((prev) => (prev === secondImages.length - 1 ? 0 : prev + 1))
       } else {
-        setCurrentMobileBgIndex((prev) => (prev === mobileBgImages.length - 1 ? 0 : prev + 1))
+        // Then change firstImages
+        setCurrentFirstImageIndex((prev) => (prev === firstImages.length - 1 ? 0 : prev + 1))
       }
-    }, 3000)
+      step++
+      timeout = setTimeout(cycle, 4000) // enough gap so one completes before next
+    }
 
-    return () => clearInterval(interval)
+    let timeout = setTimeout(cycle, 4000)
+
+    return () => clearTimeout(timeout)
   }, [isMobile])
 
   const currentFirstImage = firstImages[currentFirstImageIndex]
@@ -109,7 +121,7 @@ export default function HeroSection() {
                 initial={{ x: 0, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 0, opacity: 0 }}
-                transition={{ duration: 3.5 }}
+                transition={{ duration: 1.5 }}
                 className="absolute bottom-0 right-0 top-0 z-10 h-full w-full transform rounded-lg md:rotate-12"
               >
                 <Image src={currentFirstImage!} alt="Spirits bottle" fill className="object-cover" priority />
@@ -122,7 +134,7 @@ export default function HeroSection() {
                 initial={{ x: 0, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 0, opacity: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
+                transition={{ duration: 1.5 }}
                 className="absolute bottom-0 right-0 top-0 z-20 h-full w-full transform rounded-lg md:-rotate-12"
               >
                 <Image src={currentSecondImage!} alt="Spirits bottle" fill className="object-cover" priority />
