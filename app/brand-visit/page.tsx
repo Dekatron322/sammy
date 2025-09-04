@@ -11,15 +11,32 @@ export default function HeroSection() {
   const [scrollPosition, setScrollPosition] = useState(0)
   const [maxScroll, setMaxScroll] = useState(0)
   const [searchQuery, setSearchQuery] = useState("")
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
 
   const handleReturn = () => router.back()
 
   useEffect(() => {
+    // Check if we're on mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640) // 640px is Tailwind's 'sm' breakpoint
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
     const container = scrollContainerRef.current
     if (container) {
       const updateScrollData = () => {
         setScrollPosition(container.scrollLeft)
         setMaxScroll(container.scrollWidth - container.clientWidth)
+
+        // Calculate active index based on scroll position for mobile
+        if (isMobile) {
+          const itemWidth = container.scrollWidth / filteredServices.length
+          const newActiveIndex = Math.floor(container.scrollLeft / itemWidth)
+          setActiveIndex(newActiveIndex)
+        }
       }
 
       updateScrollData()
@@ -29,9 +46,21 @@ export default function HeroSection() {
       return () => {
         container.removeEventListener("scroll", updateScrollData)
         window.removeEventListener("resize", updateScrollData)
+        window.removeEventListener("resize", checkMobile)
       }
     }
-  }, [])
+  }, [isMobile, searchQuery])
+
+  const scrollToIndex = (index: number) => {
+    if (scrollContainerRef.current && isMobile) {
+      const container = scrollContainerRef.current
+      const itemWidth = container.scrollWidth / filteredServices.length
+      container.scrollTo({
+        left: index * itemWidth,
+        behavior: "smooth",
+      })
+    }
+  }
 
   const services = [
     {
@@ -124,7 +153,7 @@ export default function HeroSection() {
         <div className="flex w-full justify-between">
           <motion.button
             onClick={handleReturn}
-            className="mt-2 h-10 w-10"
+            className="mt-2 h-10 w-10 max-sm:hidden"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             variants={itemVariants}
@@ -141,7 +170,10 @@ export default function HeroSection() {
             >
               Curated Cellar & Brand Visits
             </motion.p>
-            <motion.p className="headfont mt-2 text-lg text-[#101720] md:text-center" variants={itemVariants}>
+            <motion.p
+              className="headfont mt-2 text-lg text-[#101720] max-sm:hidden md:text-center"
+              variants={itemVariants}
+            >
               Explore world-class regions through exclusive guided experiences.
             </motion.p>
           </motion.div>
@@ -151,7 +183,7 @@ export default function HeroSection() {
 
         {/* Search Bar */}
         <div className="flex w-full justify-center">
-          <motion.div className="mt-8 flex w-full max-w-[900px]  justify-center" variants={itemVariants}>
+          <motion.div className="mt-8 flex w-full max-w-[900px] justify-center  max-sm:hidden" variants={itemVariants}>
             <div className="relative flex w-full ">
               <input
                 type="text"
@@ -200,15 +232,15 @@ export default function HeroSection() {
         <div className="relative">
           <div
             ref={scrollContainerRef}
-            className="mt-10 grid grid-cols-3 gap-5 scroll-smooth max-sm:mt-10 max-sm:grid-cols-1"
+            className="mt-10 grid grid-cols-3 gap-5 scroll-smooth max-sm:flex max-sm:gap-4 max-sm:overflow-x-auto max-sm:pb-4"
             style={{ scrollbarWidth: "none" }}
           >
             {filteredServices.length > 0 ? (
               filteredServices.map((service, index) => (
-                <div key={index} className="relative flex-shrink-0 max-sm:w-full">
-                  <img src={service.image} alt={service.title} className="h-auto w-full rounded-lg" />
+                <div key={index} className="relative flex-shrink-0 max-sm:w-[85vw]">
+                  <img src={service.image} alt={service.title} className="h-auto w-full rounded-lg object-cover" />
                   <motion.div
-                    className="absolute bottom-0 left-0 right-0 z-50 flex h-[122px] flex-col rounded-b-lg p-8"
+                    className="absolute bottom-0 left-0 right-0 z-50 flex h-[122px] flex-col rounded-b-lg p-4 max-sm:p-3"
                     style={{
                       background: "linear-gradient(to right, #666666CC, #00000099)",
                     }}
@@ -221,12 +253,15 @@ export default function HeroSection() {
                     }}
                   >
                     <motion.h3
-                      className="headfont text-3xl font-semibold text-[#FFFFFF]"
+                      className="headfont text-2xl font-semibold text-[#FFFFFF] max-sm:text-xl"
                       whileHover={{ color: "#E5E7EB" }}
                     >
                       {service.title}
                     </motion.h3>
-                    <motion.p className="headfont font-semibold text-[#FFFFFF]" whileHover={{ color: "#E5E7EB" }}>
+                    <motion.p
+                      className="headfont font-normal text-[#FFFFFF] max-sm:text-sm"
+                      whileHover={{ color: "#E5E7EB" }}
+                    >
                       {service.readMoreLink}
                     </motion.p>
                   </motion.div>
@@ -244,6 +279,22 @@ export default function HeroSection() {
               </div>
             )}
           </div>
+
+          {/* Dot Indicators - Only show on mobile and when there are multiple items */}
+          {isMobile && filteredServices.length > 1 && (
+            <div className="mt-4 flex justify-center max-sm:flex">
+              <div className="flex space-x-2">
+                {filteredServices.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollToIndex(index)}
+                    className={`h-3 w-3 rounded-full ${index === activeIndex ? "bg-[#800020]" : "bg-gray-300"}`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </motion.div>
 
