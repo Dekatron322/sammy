@@ -146,50 +146,15 @@ export default function HeroSection() {
               className="my-7 flex w-full flex-col md:items-center md:rounded-xl md:border-2 md:border-dashed md:border-[#800020] md:bg-white md:p-4 md:shadow-2xl"
               variants={scaleUp}
             >
-              <motion.p className="mt-2 text-lg text-[#10172099] md:text-center" variants={fadeInVariants}>
-                Whether you&apos;re after rare vintages, limited editions, or the perfect bottle for a special moment, I
-                tap into trusted networks and auctions to source exceptional wines and spirits tailored just for you
+              <motion.p className="mt-2 text-lg text-[#101720CC] md:text-center 2xl:px-10" variants={fadeInVariants}>
+                <b>Rare & Collectible Bottle Sourcing:</b> Accessing rare vintages, limited editions, or exclusive
+                releases through private networks, auctions, or producers. Custom Bottle Selection: Curating lists for
+                special events, gifts, or portfolio diversification.
               </motion.p>
-
-              <motion.div
-                className="mt-4 flex items-center justify-center gap-2 rounded-md bg-[#FF972DCC] p-2"
-                variants={scaleUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-                <motion.p className="font-bold text-white" variants={fadeInVariants}>
-                  500+ rare bottles sourced
-                </motion.p>
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-              </motion.div>
-
-              <motion.div
-                className="my-4 flex items-center justify-center gap-2 rounded-md bg-[#FF972DCC] p-2"
-                variants={scaleUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-                <motion.p className="font-bold text-white" variants={fadeInVariants}>
-                  60+ exclusive producers in network
-                </motion.p>
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-              </motion.div>
-
-              <motion.div
-                className="mb-4 flex items-center justify-center gap-2 rounded-md bg-[#FF972DCC] p-2"
-                variants={scaleUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-                <motion.p className="text-sm font-bold text-white" variants={fadeInVariants}>
-                  99% client satisfaction on custom selection
-                </motion.p>
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-              </motion.div>
 
               <motion.a
                 href="/lets-talk"
-                className="flex w-36 rounded-md border border-[#73001A] px-8 py-3 text-center text-[#101720CC] transition-all duration-200 ease-in-out hover:bg-[#73001A] hover:text-white"
+                className="my-4 flex w-36 rounded-md border border-[#73001A] px-8 py-3 text-center text-[#101720] transition-all duration-200 ease-in-out hover:bg-[#73001A] hover:text-white"
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
               >

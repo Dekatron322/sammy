@@ -88,7 +88,7 @@ const DashboardNav = () => {
               variants={hamburgerVariants3}
             />
           </button>
-          <Link target="_blank" href="https://calendly.com/convexitytech/chats">
+          <Link target="_blank" href="">
             <Image src="/fresh-images/image.png" height={40} width={40} alt="Logo" />
           </Link>
         </div>
@@ -141,6 +141,24 @@ const DashboardNav = () => {
                 href="/services"
               >
                 Services
+              </Link>
+
+              <Link
+                className={`text-2xl transition-all duration-200 ease-in-out hover:text-[#800020] ${
+                  isActive("/exclusive") ? "font-medium text-[#800020]" : ""
+                }`}
+                href="/exclusive"
+              >
+                Exclusive
+              </Link>
+
+              <Link
+                className={`text-2xl transition-all duration-200 ease-in-out hover:text-[#800020] ${
+                  isActive("/brand-visit") ? "font-medium text-[#800020]" : ""
+                }`}
+                href="/brand-visit"
+              >
+                Brand Visit
               </Link>
             </div>
 
@@ -200,10 +218,22 @@ const DashboardNav = () => {
             >
               Services
             </Link>
+
+            <Link
+              className={`transition-all duration-200 ease-in-out hover:text-[#800020] ${
+                isActive("/exclusive") ? "font-medium text-[#800020]" : ""
+              }`}
+              href="/exclusive"
+            >
+              Exclusive
+            </Link>
           </div>
 
-          <div className="flex items-center gap-5">
-            <Link target="_blank" href="https://calendly.com/convexitytech/chats">
+          <div className="flex items-center gap-6">
+            <Link href="/brand-visit">
+              <Image src="/fresh-images/icon.png" height={32} width={32} alt="" />
+            </Link>
+            <Link target="_blank" href="">
               <Image src="/fresh-images/image.png" height={48} width={48} alt="" />
             </Link>
           </div>

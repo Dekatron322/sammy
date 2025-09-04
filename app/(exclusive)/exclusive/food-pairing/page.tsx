@@ -108,13 +108,13 @@ export default function HeroSection() {
         <motion.div className="relative mt-10" variants={containerVariants}>
           <motion.div className="relative w-full flex-shrink-0" variants={scaleUp}>
             <motion.img
-              src="/fresh-images/img07.png"
-              alt="Lifestyle Integration"
+              src="/fresh-images/food-pairing.png"
+              alt="Food Pairing & Culinary Collaboration"
               className="h-[428px] w-full rounded-lg object-cover max-sm:h-[250px]"
               variants={fadeInVariants}
             />
             <motion.div
-              className="absolute bottom-0 left-0 right-0 z-50 flex h-[122px] items-center rounded-b-lg p-8"
+              className="absolute bottom-0 left-0 right-0 z-50 flex h-[122px] rounded-b-lg p-8 md:items-center"
               variants={gradientHover}
               initial="initial"
               whileHover="hover"
@@ -123,7 +123,7 @@ export default function HeroSection() {
                 className="headfont w-[381px] text-3xl font-semibold text-[#FFFFFF]"
                 whileHover={{ color: "#E5E7EB" }}
               >
-                Lifestyle Integration
+                Food Pairing & Culinary Collaboration
               </motion.h3>
             </motion.div>
           </motion.div>
@@ -136,24 +136,25 @@ export default function HeroSection() {
               className="headfont text-5xl font-semibold text-[#800020] max-sm:text-3xl"
               variants={itemVariants}
             >
-              Lifestyle Integration
+              Food Pairing & Culinary Collaboration
             </motion.p>
             <motion.p className="headfont mt-2 text-lg text-[#101720] md:text-center" variants={itemVariants}>
-              Premium wines and spirits, woven into your lifestyle.
+              Sommelier-Chef Pairing Menus
             </motion.p>
 
             <motion.div
               className="my-7 flex w-full flex-col md:items-center md:rounded-xl md:border-2 md:border-dashed md:border-[#800020] md:bg-white md:p-4 md:shadow-2xl"
               variants={scaleUp}
             >
-              <motion.p className="mt-2 text-lg text-[#101720CC] md:text-center" variants={fadeInVariants}>
-                <b>Travel & Vineyard Tour Planning:</b> Organizing exclusive visits to renowned wine regions and
-                distilleries.
+              <motion.p className="mt-2 text-lg text-[#101720CC] md:text-center " variants={fadeInVariants}>
+                Collaboration with private chefs or restaurants to pair premium wines/spirits with haute cuisine.
               </motion.p>
-
-              <motion.p className="mt-2 text-lg text-[#101720CC] md:text-center" variants={fadeInVariants}>
-                <b>Gifting & Concierge Services:</b> Selecting and delivering high-end wine/spirits gifts for clients,
-                corporate programs, or celebrations.
+              <motion.p className="mt-4 text-lg font-bold text-[#101720CC] md:text-center " variants={fadeInVariants}>
+                Interactive Pairing Sessions:
+              </motion.p>
+              <motion.p className="text-lg  text-[#101720CC] md:text-center " variants={fadeInVariants}>
+                Guests are guided through the synergy between food and beverage, highlighting contrast, complement, and
+                elevation.
               </motion.p>
 
               <motion.a

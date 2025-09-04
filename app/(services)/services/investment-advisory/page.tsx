@@ -146,50 +146,18 @@ export default function HeroSection() {
               className="my-7 flex w-full flex-col md:items-center md:rounded-xl md:border-2 md:border-dashed md:border-[#800020] md:bg-white md:p-4 md:shadow-2xl"
               variants={scaleUp}
             >
-              <motion.p className="mt-2 text-lg text-[#10172099] md:text-center" variants={fadeInVariants}>
-                I offer guidance on building a valuable wine and spirits portfolio, from market trends and ROI insights
-                to auction support and storage strategies that protect your assets
+              <motion.p className="mt-2 text-lg text-[#101720CC] md:text-center" variants={fadeInVariants}>
+                <b>Fine Wine & Spirits Investment Guidance:</b> Advising on the financial aspects of collectible
+                alcohol, including market trends, ROI potential, and storage logistics.
               </motion.p>
 
-              <motion.div
-                className="mt-4 flex justify-center gap-2 rounded-md bg-[#FF972DCC] p-2 md:items-center"
-                variants={scaleUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-                <motion.p className="font-bold text-white" variants={fadeInVariants}>
-                  $10M+ in assets under advisory
-                </motion.p>
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-              </motion.div>
-
-              <motion.div
-                className="my-4 flex justify-center gap-2 rounded-md bg-[#FF972DCC] p-2 md:items-center"
-                variants={scaleUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-                <motion.p className="font-bold text-white" variants={fadeInVariants}>
-                  95% auction success rate for clients
-                </motion.p>
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-              </motion.div>
-
-              <motion.div
-                className="mb-4 flex justify-center gap-2 rounded-md bg-[#FF972DCC] p-2 md:items-center"
-                variants={scaleUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-                <motion.p className="font-bold text-white" variants={fadeInVariants}>
-                  50+ collectible portfolios managed
-                </motion.p>
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-              </motion.div>
+              <motion.p className="mt-2 text-lg text-[#101720CC] md:text-center" variants={fadeInVariants}>
+                <b>Auction Advisory & Bidding Representation:</b> Assisting with buying or selling at major auctions.
+              </motion.p>
 
               <motion.a
                 href="/lets-talk"
-                className="flex w-36 rounded-md border border-[#73001A] px-8 py-3 text-center text-[#101720CC] transition-all duration-200 ease-in-out hover:bg-[#73001A] hover:text-white"
+                className="my-4 flex w-36 rounded-md border border-[#73001A] px-8 py-3 text-center text-[#101720] transition-all duration-200 ease-in-out hover:bg-[#73001A] hover:text-white"
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
               >
