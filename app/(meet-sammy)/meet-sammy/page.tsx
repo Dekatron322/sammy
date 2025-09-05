@@ -68,7 +68,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="rounded-md border border-[#73001A] px-8 py-3 text-[#101720CC] transition-all duration-200 ease-in-out hover:bg-[#80002066]"
+              className="rounded-md border border-[#73001A] px-8 py-3 text-[#101720CC] transition-all duration-200 ease-in-out hover:bg-[#73001A] hover:text-white"
               href="/meet-sammy/see-more"
             >
               See More

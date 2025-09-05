@@ -1,5 +1,6 @@
 "use client"
 
+import { FacebookIcon, InstagramIcon, LinkedInIcon, TwitterIcon, YoutubeIcon } from "components/Icons/Icons"
 import DashboardNav from "components/Navbar/DashboardNav"
 import { AnimatePresence, motion } from "framer-motion"
 import Image from "next/image"
@@ -147,6 +148,15 @@ export default function HeroSection() {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Social Icons positioned at the bottom of the page */}
+      <div className="paddings absolute bottom-0 left-0 right-0 flex w-full gap-6 py-6">
+        <FacebookIcon />
+        <LinkedInIcon />
+        <InstagramIcon />
+        <YoutubeIcon />
+        <TwitterIcon />
       </div>
     </section>
   )
