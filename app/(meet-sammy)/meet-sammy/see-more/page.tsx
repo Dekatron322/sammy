@@ -68,8 +68,8 @@ export default function HeroSection() {
     >
       <DashboardNav />
 
-      <div className="mx-auto flex h-[calc(100vh-105px)] items-center max-sm:h-svh  md:px-20">
-        <div className="flex h-[696px] w-full max-w-3xl flex-col rounded-b-lg bg-[#FFFFFFCC] bg-opacity-90 shadow-lg backdrop-blur-sm max-sm:h-svh max-sm:p-4 max-sm:pt-20 md:p-8">
+      <div className="mx-auto flex h-[calc(100vh-105px)] items-center max-sm:h-svh md:mt-10  md:px-20 3xl:mt-0">
+        <div className="flex w-full max-w-3xl flex-col rounded-b-lg bg-[#FFFFFFCC] bg-opacity-90 shadow-lg backdrop-blur-sm max-sm:h-svh max-sm:p-4 max-sm:pt-20 md:h-[600px] md:p-8  3xl:h-[696px]">
           <div className="flex-1">
             {!isChatOpen ? (
               <>
@@ -152,7 +152,6 @@ export default function HeroSection() {
             <LinkedInIcon />
             <InstagramIcon />
             <YoutubeIcon />
-            <TwitterIcon />
           </div>
         </div>
       </div>

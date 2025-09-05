@@ -156,7 +156,6 @@ export default function HeroSection() {
         <LinkedInIcon />
         <InstagramIcon />
         <YoutubeIcon />
-        <TwitterIcon />
       </div>
     </section>
   )

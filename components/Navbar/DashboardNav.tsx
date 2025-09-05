@@ -168,7 +168,6 @@ const DashboardNav = () => {
               <LinkedInIcon />
               <InstagramIcon />
               <YoutubeIcon />
-              <TwitterIcon />
             </div>
           </div>
         </motion.div>
