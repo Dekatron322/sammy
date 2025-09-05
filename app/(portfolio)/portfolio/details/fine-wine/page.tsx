@@ -161,19 +161,6 @@ export default function HeroSection() {
                 audiences and setting the stage for sustainable success.
               </motion.p>
 
-              <motion.div
-                className="flex items-center justify-between gap-2 rounded-md bg-[#FF972DCC] p-2"
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
-              >
-                <motion.img src="/fresh-images/star.svg" />
-                <motion.p className="font-bold text-white max-sm:text-center max-sm:text-sm">
-                  Delivered 100%+ target growth
-                </motion.p>
-                <motion.img src="/fresh-images/star.svg" />
-              </motion.div>
-
               <motion.div className=" mt-10 grid gap-4 md:grid-cols-2 md:gap-10" variants={containerVariants}>
                 {[0, 1, 2, 3].map((item) => (
                   <motion.div

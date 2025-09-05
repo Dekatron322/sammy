@@ -170,18 +170,6 @@ export default function HeroSection() {
               </motion.p>
 
               <motion.div
-                className="flex items-center justify-between gap-2 rounded-md bg-[#FF972DCC] p-2"
-                variants={scaleUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-                <motion.p className="font-bold text-white max-sm:text-center max-sm:text-sm" variants={fadeInVariants}>
-                  Premium+ visibility boost across Nigeria
-                </motion.p>
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-              </motion.div>
-
-              <motion.div
                 className="mt-10 grid gap-10 md:grid-cols-2"
                 variants={containerVariants}
                 initial="hidden"

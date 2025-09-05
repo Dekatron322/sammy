@@ -160,21 +160,6 @@ export default function HeroSection() {
                   with local markets.
                 </motion.p>
 
-                <motion.div
-                  className="flex w-full items-center justify-between gap-2 rounded-md bg-[#FF972DCC] p-2"
-                  variants={scaleUp}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-                  <motion.p
-                    className="font-bold text-white max-sm:text-center max-sm:text-sm"
-                    variants={fadeInVariants}
-                  >
-                    Full P&L oversight across West Africa
-                  </motion.p>
-                  <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-                </motion.div>
-
                 <motion.div className="mt-10 grid gap-10 max-sm:gap-4 md:grid-cols-2" variants={containerVariants}>
                   {[0, 1, 2, 3].map((item) => (
                     <motion.div

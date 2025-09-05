@@ -178,18 +178,6 @@ export default function HeroSection() {
                 Africa&apos;s most vibrant markets.
               </motion.p>
 
-              <motion.div
-                className="flex w-full items-center justify-between gap-2 rounded-md bg-[#FF972DCC] p-2"
-                variants={scaleUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-                <motion.p className="font-bold text-white max-sm:text-center max-sm:text-sm" variants={fadeInVariants}>
-                  £28M in gross sales
-                </motion.p>
-                <motion.img src="/fresh-images/star.svg" variants={fadeInVariants} />
-              </motion.div>
-
               <motion.div className="mt-10 grid gap-10 md:grid-cols-2" variants={containerVariants}>
                 {[4, 5, 6, 7].map((item) => (
                   <motion.div
