@@ -4,6 +4,7 @@ import { FacebookIcon, InstagramIcon, LinkedInIcon, TwitterIcon, YoutubeIcon } f
 import DashboardNav from "components/Navbar/DashboardNav"
 import { AnimatePresence, motion } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 export default function HeroSection() {
@@ -152,9 +153,18 @@ export default function HeroSection() {
 
       {/* Social Icons positioned at the bottom of the page */}
       <div className="paddings absolute bottom-0 left-0 right-0 flex w-full gap-6 py-6">
-        <FacebookIcon />
-        <LinkedInIcon />
-        <InstagramIcon />
+        <Link href="https://www.facebook.com/share/16nYsPrn6z/?mibextid=LQQJ4d" target="_blank">
+          <FacebookIcon />
+        </Link>
+        <Link
+          href="https://www.linkedin.com/in/sammy-okwandu-041ba643?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+          target="_blank"
+        >
+          <LinkedInIcon />
+        </Link>
+        <Link href="https://www.instagram.com/simplypsalms?igsh=MXM2aDU4c29yczFvaQ%3D%3D&utm_source=qr" target="_blank">
+          <InstagramIcon />
+        </Link>
         <YoutubeIcon />
       </div>
     </section>

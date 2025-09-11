@@ -164,9 +164,21 @@ const DashboardNav = () => {
 
             {/* Social icons container fixed at bottom */}
             <div className="flex w-full items-center justify-between px-20 pb-8">
-              <FacebookIcon />
-              <LinkedInIcon />
-              <InstagramIcon />
+              <Link href="https://www.facebook.com/share/16nYsPrn6z/?mibextid=LQQJ4d" target="_blank">
+                <FacebookIcon />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/sammy-okwandu-041ba643?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                target="_blank"
+              >
+                <LinkedInIcon />
+              </Link>
+              <Link
+                href="https://www.instagram.com/simplypsalms?igsh=MXM2aDU4c29yczFvaQ%3D%3D&utm_source=qr"
+                target="_blank"
+              >
+                <InstagramIcon />
+              </Link>
               <YoutubeIcon />
             </div>
           </div>
